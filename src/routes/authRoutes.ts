@@ -1,5 +1,10 @@
+import express from 'express'
+import { register } from '../controller/authController'
 
 
-const express = require("express")
+const router = express.Router()
 
-const routes = express.Routes()
+router.post('/register',register)
+
+
+export default router;
