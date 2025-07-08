@@ -1,16 +1,18 @@
-import {Column, Entity, PrimaryColumn} from "typeorm"
+import { IsEmail } from "class-validator"
+import {Column, Entity, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm"
 
-@Entity({name="Users"})
+@Entity({name:"Users"})
 
 export class Usuario{
-    @PrimaryColumn()
-    id:number,
+    @PrimaryGeneratedColumn()
+    id!:number
     @Column(
         
     )
-    email:string,
+    @IsEmail()
+    email!:string
     @Column(
-       { length:10}      
+           
     )
-    password:string
+    password!:string
 }
