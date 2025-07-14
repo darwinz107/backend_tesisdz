@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
     username: "root",
     password: "root",
     database: "databasedz4",
-    synchronize: true,
+    synchronize: false,
     logging: true,
     entities: [Usuario],
     subscribers: [],
