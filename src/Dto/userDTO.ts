@@ -1,4 +1,5 @@
-import { IsEmail, IsNumber, IsString } from "class-validator";
+import { IsEmail, IsEnum, IsNumber, IsString } from "class-validator";
+import { Rol } from "../enums/roles";
 
 
 export class userDto{
@@ -11,5 +12,6 @@ export class userDto{
     @IsEmail()
     email:string
 
-    
+    @IsEnum(Rol)
+    rol:Rol
 }

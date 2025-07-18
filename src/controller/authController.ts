@@ -3,6 +3,7 @@ import { hashedPassword } from "../services/password.services";
 import { Usuario } from "../entities/user.entity";
 import { AppDataSource } from "../connection/data-source";
 import { tokenizar } from "../services/auth.token.services";
+import { Rol } from "../enums/roles";
 
 const userRepository = AppDataSource.getRepository(Usuario)
 
@@ -20,7 +21,9 @@ export const register = async(req:Request,res:Response):Promise<void> =>{
                 name,
                 cellphone,
                 email,
-                password: passwordHashed
+                password: passwordHashed,
+                rol:Rol.USER
+                
             }
         );
        

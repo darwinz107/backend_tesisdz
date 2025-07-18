@@ -30,8 +30,10 @@ try {
     const info = {
         id:pass.id,
         name:pass.name,
-        email:pass.email
+        email:pass.email,
+        rol:pass.rol
     }
+    console.log(info)
     const token = tokenizar(info);
 
     console.log(token)

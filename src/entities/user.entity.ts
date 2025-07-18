@@ -1,5 +1,6 @@
-import { IsEmail, IsNumber, Length, Max, max } from "class-validator"
+import { IsEmail, IsEnum, IsNumber, IsString, Length, Max, max } from "class-validator"
 import {Column, Entity, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm"
+import { Rol } from "../enums/roles"
 
 @Entity({name:"Users"})
 
@@ -24,4 +25,9 @@ export class Usuario{
            
     )
     password!:string
+
+    
+    @Column()
+    @IsEnum(Rol)
+    rol:Rol
 }
