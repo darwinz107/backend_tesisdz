@@ -6,7 +6,7 @@ import { Rol } from "../enums/roles"
 
 export class Usuario{
     @PrimaryGeneratedColumn()
-    id!:number
+    id:number
 
     @Column()
     name:string
@@ -20,11 +20,12 @@ export class Usuario{
         
     )
     @IsEmail()
-    email!:string
+    email:string
+
     @Column(
            
     )
-    password!:string
+    password:string
 
     
     @Column()

@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express'
 import  jwt from 'jsonwebtoken'
-import { obtenerUser } from '../controller/authController'
+import { getUserById, obtenerUser, updateUser } from '../controller/authController'
 
 
 const router = express.Router()
@@ -30,5 +30,6 @@ jwt.verify(token,JWT_SECRET,(err,decode)=>{
 
 
 router.get('/user',validarToken,obtenerUser)
-
+router.get('/user/:id',getUserById)
+router.put('/update/:id',updateUser)
 export default router;

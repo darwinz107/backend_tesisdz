@@ -104,3 +104,62 @@ console.log("Error: Response empty")
 }
 
 }
+
+export const getUserById = async(req:Request,res:Response):Promise<void> =>{
+try {
+    const {id} = req.params;
+  const user = await userRepository.createQueryBuilder("user")
+                                    .select(["user.name","user.cellphone","user.email"])
+                                    .where("user.id = :id",{id})
+                                    .getOne();
+
+  
+
+  if(user){
+ res.status(200).json(user);
+  }else{
+    res.status(404).json({message:"User not found"})
+  };
+} catch (error) {
+  console.log(error)
+}
+
+
+
+}
+
+export const updateUser = async(req:Request,res:Response):Promise<void> =>{
+
+  try {
+      const {id} = req.params;
+
+  const {name,cellphone,email} = req.body;
+
+  const user = await userRepository.update(
+id,{name:name,
+  cellphone:cellphone,
+  email:email
+});
+ 
+ const infoUser = await userRepository.createQueryBuilder('user')
+                                      .select(["user.id","user.name","user.cellphone","user.email","user.rol"])
+                                      .where("user.id = :id",{id})
+                                      .getOne(); 
+                                      
+  
+
+  if(user.affected && infoUser){
+    const token = tokenizar(infoUser)
+res.status(200).json(token)
+  }
+ 
+  
+
+  } catch (error) {
+
+    console.log(error)
+  }
+
+
+
+}
